@@ -9,6 +9,6 @@ https://github.com/nxPublic/GeforceNowQueueDisplay/releases
 
 
 ## Virustotal
-in upload
+https://www.virustotal.com/gui/file-analysis/M2EyY2E5YzAxZGE4OTZlYzUyYjIyYzM2OThlNjI2NGM6MTYwNzY0MTQzMQ==/detection
 No clue why there are detections, its not obfuscated/packed or crypted. If you dont trust it, compile it yourself or check my uploaded file with a .mono/.net editor. 
 (DotPeek is a great way)
