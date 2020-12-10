@@ -34,3 +34,12 @@ C:\Users\Kevin\source\repos\GeforceNowQueDisplay\GeforceNowQueVB\obj\Debug\Gefor
 C:\Users\Kevin\source\repos\GeforceNowQueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueVB.csproj.GenerateResource.cache
 C:\Users\Kevin\source\repos\GeforceNowQueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueVB.exe
 C:\Users\Kevin\source\repos\GeforceNowQueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueVB.pdb
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\bin\Debug\GeforceNowQueVB.exe.config
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\bin\Debug\GeforceNowQueVB.exe
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\bin\Debug\GeforceNowQueVB.pdb
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueVB.csprojAssemblyReference.cache
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueVB.Form1.resources
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueVB.Properties.Resources.resources
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueVB.csproj.GenerateResource.cache
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueVB.exe
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueVB.pdb
