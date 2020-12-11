@@ -2,7 +2,7 @@
 Since the default application for some reason does not show you your current queue position i made this little tool to have open while doing other stuff.
 If you have suggestions open them as Issues and i will add them.
 
-![screenshot](https://i.ibb.co/mSKDzyY/image.png)
+![screenshot](https://github.com/nxPublic/GeforceNowQueueDisplay/blob/main/screenshot.png?raw=true)
 
 ## Download Compiled
 https://github.com/nxPublic/GeforceNowQueueDisplay/releases
