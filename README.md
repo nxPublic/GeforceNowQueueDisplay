@@ -16,3 +16,8 @@ No clue why there are detections, its not obfuscated/packed or crypted. If you d
 ## Requirements
 * .net Framework 2.0 (Basically Windows XP SP2 or better)
 * If you want the unqiue font inside the Programm install: https://www.dafont.com/isl-jupiter.font
+
+## Support me and this Repository
+You are ofcourse welcome to fork, do modifications or make pull requests of your own.
+However if you feel like supporting me you can do so with buying me a coffee here : http://paypal.me/GrimDawn.
+Thanks for considering it!
