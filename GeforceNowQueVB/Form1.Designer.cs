@@ -52,22 +52,28 @@
             this.websiteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.exitToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
+            this.totalRunTime = new System.Windows.Forms.ToolStripStatusLabel();
+            this.currentPositionLabel = new System.Windows.Forms.Label();
+            this.bgPanel = new System.Windows.Forms.Panel();
+            this.label2 = new System.Windows.Forms.Label();
+            this.averageQueueTime = new System.Windows.Forms.Label();
+            this.modeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.defaultToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.compactToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.darkToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.label1 = new System.Windows.Forms.Label();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSplitButton();
             this.clickToForceUpdateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelTimer = new System.Windows.Forms.ToolStripMenuItem();
-            this.lengthToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelLength = new System.Windows.Forms.ToolStripMenuItem();
-            this.sizeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.labelSize = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
-            this.totalRunTime = new System.Windows.Forms.ToolStripStatusLabel();
-            this.label1 = new System.Windows.Forms.Label();
+            this.toolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.averageQueTimeInMinutesLabel = new System.Windows.Forms.ToolStripMenuItem();
+            this.totalDifferentQueueStagesLabel = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.bgPanel = new System.Windows.Forms.Panel();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.bgPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // timer1
@@ -99,6 +105,7 @@
             this.manualSelectFilePathToolStripMenuItem,
             this.convienceToolStripMenuItem,
             this.creditsToolStripMenuItem,
+            this.modeToolStripMenuItem,
             this.exitToolStripMenuItem});
             this.settingsToolStripMenuItem.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.settingsToolStripMenuItem.Name = "settingsToolStripMenuItem";
@@ -110,7 +117,7 @@
             this.manualSelectFilePathToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.selectLogFileManuallyToolStripMenuItem});
             this.manualSelectFilePathToolStripMenuItem.Name = "manualSelectFilePathToolStripMenuItem";
-            this.manualSelectFilePathToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.manualSelectFilePathToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.manualSelectFilePathToolStripMenuItem.Text = "File path";
             // 
             // selectLogFileManuallyToolStripMenuItem
@@ -128,7 +135,7 @@
             this.timerIntervalToolStripMenuItem,
             this.hideProgressbarToolStripMenuItem});
             this.convienceToolStripMenuItem.Name = "convienceToolStripMenuItem";
-            this.convienceToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.convienceToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.convienceToolStripMenuItem.Text = "Convenience";
             // 
             // alwaysOnTopToolStripMenuItem
@@ -213,28 +220,29 @@
             this.githubToolStripMenuItem,
             this.websiteToolStripMenuItem});
             this.creditsToolStripMenuItem.Name = "creditsToolStripMenuItem";
-            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.creditsToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.creditsToolStripMenuItem.Text = "Credits";
             // 
             // githubToolStripMenuItem
             // 
             this.githubToolStripMenuItem.Name = "githubToolStripMenuItem";
-            this.githubToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.githubToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.githubToolStripMenuItem.Text = "Github";
             this.githubToolStripMenuItem.Click += new System.EventHandler(this.githubToolStripMenuItem_Click);
             // 
             // websiteToolStripMenuItem
             // 
             this.websiteToolStripMenuItem.Name = "websiteToolStripMenuItem";
-            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.websiteToolStripMenuItem.Size = new System.Drawing.Size(116, 22);
             this.websiteToolStripMenuItem.Text = "Website";
             this.websiteToolStripMenuItem.Click += new System.EventHandler(this.websiteToolStripMenuItem_Click);
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
             this.exitToolStripMenuItem.Text = "Exit";
+            this.exitToolStripMenuItem.Click += new System.EventHandler(this.exitToolStripMenuItem_Click);
             // 
             // statusStrip1
             // 
@@ -245,11 +253,110 @@
             this.toolStripSplitButton1,
             this.toolStripProgressBar1,
             this.totalRunTime});
-            this.statusStrip1.Location = new System.Drawing.Point(0, 192);
+            this.statusStrip1.Location = new System.Drawing.Point(0, 183);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(404, 22);
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
+            // 
+            // toolStripProgressBar1
+            // 
+            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
+            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            // 
+            // totalRunTime
+            // 
+            this.totalRunTime.Name = "totalRunTime";
+            this.totalRunTime.Size = new System.Drawing.Size(101, 17);
+            this.totalRunTime.Text = "15 minutes in que";
+            // 
+            // currentPositionLabel
+            // 
+            this.currentPositionLabel.BackColor = System.Drawing.Color.Transparent;
+            this.currentPositionLabel.Font = new System.Drawing.Font("ISL_Jupiter", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.currentPositionLabel.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.currentPositionLabel.Location = new System.Drawing.Point(0, 139);
+            this.currentPositionLabel.Name = "currentPositionLabel";
+            this.currentPositionLabel.Size = new System.Drawing.Size(196, 41);
+            this.currentPositionLabel.TabIndex = 1;
+            this.currentPositionLabel.Text = "0";
+            this.currentPositionLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // bgPanel
+            // 
+            this.bgPanel.BackColor = System.Drawing.Color.White;
+            this.bgPanel.Controls.Add(this.label1);
+            this.bgPanel.Controls.Add(this.label2);
+            this.bgPanel.Controls.Add(this.averageQueueTime);
+            this.bgPanel.Controls.Add(this.currentPositionLabel);
+            this.bgPanel.Controls.Add(this.statusStrip1);
+            this.bgPanel.Controls.Add(this.menuStrip1);
+            this.bgPanel.Controls.Add(this.pictureBox1);
+            this.bgPanel.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.bgPanel.Location = new System.Drawing.Point(0, 0);
+            this.bgPanel.Name = "bgPanel";
+            this.bgPanel.Size = new System.Drawing.Size(404, 205);
+            this.bgPanel.TabIndex = 2;
+            // 
+            // label2
+            // 
+            this.label2.Font = new System.Drawing.Font("ISL_Jupiter", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(210, 126);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(191, 13);
+            this.label2.TabIndex = 8;
+            this.label2.Text = "Estimated Queue Time";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // averageQueueTime
+            // 
+            this.averageQueueTime.BackColor = System.Drawing.Color.Transparent;
+            this.averageQueueTime.Font = new System.Drawing.Font("ISL_Jupiter", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.averageQueueTime.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.averageQueueTime.Location = new System.Drawing.Point(205, 139);
+            this.averageQueueTime.Name = "averageQueueTime";
+            this.averageQueueTime.Size = new System.Drawing.Size(196, 41);
+            this.averageQueueTime.TabIndex = 7;
+            this.averageQueueTime.Text = "105 minutes";
+            this.averageQueueTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // modeToolStripMenuItem
+            // 
+            this.modeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.defaultToolStripMenuItem,
+            this.compactToolStripMenuItem,
+            this.darkToolStripMenuItem});
+            this.modeToolStripMenuItem.Name = "modeToolStripMenuItem";
+            this.modeToolStripMenuItem.Size = new System.Drawing.Size(143, 22);
+            this.modeToolStripMenuItem.Text = "Mode";
+            // 
+            // defaultToolStripMenuItem
+            // 
+            this.defaultToolStripMenuItem.Name = "defaultToolStripMenuItem";
+            this.defaultToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.defaultToolStripMenuItem.Text = "Default";
+            // 
+            // compactToolStripMenuItem
+            // 
+            this.compactToolStripMenuItem.Name = "compactToolStripMenuItem";
+            this.compactToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.compactToolStripMenuItem.Text = "Compact";
+            // 
+            // darkToolStripMenuItem
+            // 
+            this.darkToolStripMenuItem.Name = "darkToolStripMenuItem";
+            this.darkToolStripMenuItem.Size = new System.Drawing.Size(123, 22);
+            this.darkToolStripMenuItem.Text = "Dark";
+            // 
+            // label1
+            // 
+            this.label1.Font = new System.Drawing.Font("ISL_Jupiter", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(2, 126);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(191, 13);
+            this.label1.TabIndex = 9;
+            this.label1.Text = "Current Position";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // toolStripSplitButton1
             // 
@@ -258,9 +365,8 @@
             this.toolStripSplitButton1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.clickToForceUpdateToolStripMenuItem,
             this.labelTimer,
-            this.lengthToolStripMenuItem,
-            this.sizeToolStripMenuItem});
-            this.toolStripSplitButton1.Image = global::GeforceNowQueVB.Properties.Resources.setting2;
+            this.toolStripMenuItem1});
+            this.toolStripSplitButton1.Image = global::GeforceNowQueueDisplay.Properties.Resources.setting2;
             this.toolStripSplitButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
             this.toolStripSplitButton1.Size = new System.Drawing.Size(32, 20);
@@ -280,87 +386,43 @@
             this.labelTimer.Size = new System.Drawing.Size(215, 22);
             this.labelTimer.Text = "Next update in (0) seconds";
             // 
-            // lengthToolStripMenuItem
+            // toolStripMenuItem1
             // 
-            this.lengthToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.labelLength});
-            this.lengthToolStripMenuItem.Name = "lengthToolStripMenuItem";
-            this.lengthToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.lengthToolStripMenuItem.Text = "Length";
+            this.toolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.averageQueTimeInMinutesLabel,
+            this.totalDifferentQueueStagesLabel});
+            this.toolStripMenuItem1.Name = "toolStripMenuItem1";
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(215, 22);
+            this.toolStripMenuItem1.Text = "Information";
             // 
-            // labelLength
+            // averageQueTimeInMinutesLabel
             // 
-            this.labelLength.Name = "labelLength";
-            this.labelLength.Size = new System.Drawing.Size(108, 22);
-            this.labelLength.Text = "length";
+            this.averageQueTimeInMinutesLabel.Name = "averageQueTimeInMinutesLabel";
+            this.averageQueTimeInMinutesLabel.Size = new System.Drawing.Size(216, 22);
+            this.averageQueTimeInMinutesLabel.Text = "averageQueTimeInMinutes";
             // 
-            // sizeToolStripMenuItem
+            // totalDifferentQueueStagesLabel
             // 
-            this.sizeToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.labelSize});
-            this.sizeToolStripMenuItem.Name = "sizeToolStripMenuItem";
-            this.sizeToolStripMenuItem.Size = new System.Drawing.Size(215, 22);
-            this.sizeToolStripMenuItem.Text = "Size";
-            // 
-            // labelSize
-            // 
-            this.labelSize.Name = "labelSize";
-            this.labelSize.Size = new System.Drawing.Size(114, 22);
-            this.labelSize.Text = "4029 kb";
-            // 
-            // toolStripProgressBar1
-            // 
-            this.toolStripProgressBar1.Name = "toolStripProgressBar1";
-            this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
-            // 
-            // totalRunTime
-            // 
-            this.totalRunTime.Name = "totalRunTime";
-            this.totalRunTime.Size = new System.Drawing.Size(101, 17);
-            this.totalRunTime.Text = "15 minutes in que";
-            // 
-            // label1
-            // 
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.label1.Font = new System.Drawing.Font("ISL_Jupiter", 27.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.label1.Location = new System.Drawing.Point(0, 151);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(404, 41);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "1090";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.totalDifferentQueueStagesLabel.Name = "totalDifferentQueueStagesLabel";
+            this.totalDifferentQueueStagesLabel.Size = new System.Drawing.Size(216, 22);
+            this.totalDifferentQueueStagesLabel.Text = "totalDifferentQueueStages";
             // 
             // pictureBox1
             // 
             this.pictureBox1.BackColor = System.Drawing.Color.Transparent;
-            this.pictureBox1.Image = global::GeforceNowQueVB.Properties.Resources.NV_GeForce_Now_logo_2C_vert_CMYK_1443609475_640x209;
-            this.pictureBox1.Location = new System.Drawing.Point(0, 21);
+            this.pictureBox1.Image = global::GeforceNowQueueDisplay.Properties.Resources.NV_GeForce_Now_logo_2C_vert_CMYK_1443609475_640x209;
+            this.pictureBox1.Location = new System.Drawing.Point(42, 24);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(404, 127);
+            this.pictureBox1.Size = new System.Drawing.Size(320, 104);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
-            // 
-            // bgPanel
-            // 
-            this.bgPanel.BackColor = System.Drawing.Color.White;
-            this.bgPanel.Controls.Add(this.pictureBox1);
-            this.bgPanel.Controls.Add(this.label1);
-            this.bgPanel.Controls.Add(this.statusStrip1);
-            this.bgPanel.Controls.Add(this.menuStrip1);
-            this.bgPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.bgPanel.Location = new System.Drawing.Point(0, 0);
-            this.bgPanel.Name = "bgPanel";
-            this.bgPanel.Size = new System.Drawing.Size(404, 214);
-            this.bgPanel.TabIndex = 2;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(404, 214);
+            this.ClientSize = new System.Drawing.Size(404, 205);
             this.Controls.Add(this.bgPanel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -374,9 +436,9 @@
             this.menuStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.bgPanel.ResumeLayout(false);
             this.bgPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -394,12 +456,8 @@
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripSplitButton toolStripSplitButton1;
         private System.Windows.Forms.ToolStripMenuItem labelTimer;
-        private System.Windows.Forms.ToolStripMenuItem lengthToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem labelLength;
-        private System.Windows.Forms.ToolStripMenuItem sizeToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem labelSize;
         private System.Windows.Forms.ToolStripProgressBar toolStripProgressBar1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label currentPositionLabel;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Panel bgPanel;
         private System.Windows.Forms.ToolStripStatusLabel totalRunTime;
@@ -416,6 +474,16 @@
         private System.Windows.Forms.ToolStripMenuItem secondsToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem hideProgressbarToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem5;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label averageQueueTime;
+        private System.Windows.Forms.ToolStripMenuItem modeToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem defaultToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem compactToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem darkToolStripMenuItem;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.ToolStripMenuItem toolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem averageQueTimeInMinutesLabel;
+        private System.Windows.Forms.ToolStripMenuItem totalDifferentQueueStagesLabel;
     }
 }
 

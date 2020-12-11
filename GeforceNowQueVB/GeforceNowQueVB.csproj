@@ -6,8 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{059C312C-D1C1-4849-85FB-625C50428898}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>GeforceNowQueVB</RootNamespace>
-    <AssemblyName>GeforceNowQueVB</AssemblyName>
+    <RootNamespace>GeforceNowQueueDisplay</RootNamespace>
+    <AssemblyName>GeforceNowQueueDisplay</AssemblyName>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -89,6 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Bokehlicia-Alike-Nvidia.ico" />
+    <None Include="Resources\jupiter.ttf" />
     <None Include="Resources\NV_GeForce_Now_logo_2C_vert_CMYK_1443609475-640x209.jpg" />
     <None Include="Resources\settings-25-xxl.png" />
     <None Include="Resources\setting2.png" />

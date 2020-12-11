@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GeforceNowQueVB.Properties {
+namespace GeforceNowQueueDisplay.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GeforceNowQueVB.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeforceNowQueVB.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeforceNowQueueDisplay.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -67,6 +67,16 @@ namespace GeforceNowQueVB.Properties {
             get {
                 object obj = ResourceManager.GetObject("221443", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Byte[].
+        /// </summary>
+        internal static byte[] jupiter {
+            get {
+                object obj = ResourceManager.GetObject("jupiter", resourceCulture);
+                return ((byte[])(obj));
             }
         }
         

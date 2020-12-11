@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("Geforce Now Que Display")]
+[assembly: AssemblyTitle("Geforce Now Queue Display")]
 [assembly: AssemblyDescription("Google the name of this programm to find its github repo")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("http://n-x.xyz")]
-[assembly: AssemblyProduct("Geforce Now Que Display")]
+[assembly: AssemblyProduct("Geforce Now Queue Display")]
 [assembly: AssemblyCopyright("Copyright © n-x.xyz  2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
