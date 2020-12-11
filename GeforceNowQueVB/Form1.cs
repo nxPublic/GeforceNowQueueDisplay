@@ -196,7 +196,7 @@ namespace GeforceNowQueVB
             toolStripProgressBar1.Increment(1);
             totalRuntimeInSeconds += 1;
             labelTimer.Text = "Next update in " + ((timer1.Interval / 1000) - toolStripProgressBar1.Value) + " seconds";
-            totalRunTime.Text = "In que since " + totalRuntimeInSeconds / 60 + " minutes";
+            totalRunTime.Text = "In queue since " + totalRuntimeInSeconds / 60 + " minutes";
         }
 
         private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
