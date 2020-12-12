@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace GeforceNowQueueDisplay.Properties {
+namespace GeforceNowQueDisplay.Properties {
     using System;
     
     
@@ -39,7 +39,7 @@ namespace GeforceNowQueueDisplay.Properties {
         internal static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
-                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeforceNowQueueDisplay.Properties.Resources", typeof(Resources).Assembly);
+                    global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("GeforceNowQueDisplay.Properties.Resources", typeof(Resources).Assembly);
                     resourceMan = temp;
                 }
                 return resourceMan;
@@ -86,6 +86,16 @@ namespace GeforceNowQueueDisplay.Properties {
         internal static System.Drawing.Bitmap NV_GeForce_Now_logo_2C_vert_CMYK_1443609475_640x209 {
             get {
                 object obj = ResourceManager.GetObject("NV_GeForce_Now_logo_2C_vert_CMYK_1443609475-640x209", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap NV_GeForce_Now_logo_2C_vert_CMYK_1443609475_640x209_t {
+            get {
+                object obj = ResourceManager.GetObject("NV_GeForce_Now_logo_2C_vert_CMYK_1443609475_640x209_t", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

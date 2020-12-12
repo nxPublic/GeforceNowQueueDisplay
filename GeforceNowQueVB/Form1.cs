@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Text;
 using System.IO;
 using System.Windows.Forms;
+using System.Reflection;
 
 namespace GeforceNowQueVB
 {
@@ -24,12 +25,12 @@ namespace GeforceNowQueVB
         }
 
 
-        private void websiteToolStripMenuItem_Click(object sender, EventArgs e)
+        private void websiteToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("http://n-x.xyz");
         }
 
-        private void githubToolStripMenuItem_Click(object sender, EventArgs e)
+        private void githubToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             System.Diagnostics.Process.Start("https://github.com/nxPublic/GeforceNowQueueDisplay");
         }
@@ -116,7 +117,8 @@ namespace GeforceNowQueVB
                 return;
             }
             averageTimeBetweenQueueChange = total / count;
-            averageQueueTime.Text = Convert.ToString((Math.Round((averageTimeBetweenQueueChange / 60) * actualPosition)) + " minutes");
+            averageQueueTime.Text = Convert.ToString((Math.Round((averageTimeBetweenQueueChange / 60) * actualPosition)) + " minutes").Trim();
+            Clipboard.SetText(averageQueueTime.Text);
             currentPositionLabel.Text = actualPosition.ToString();
 
 
@@ -175,10 +177,10 @@ namespace GeforceNowQueVB
         }
 
         int totalRuntimeInSeconds = 0;
-        private void Form1_Load(object sender, EventArgs e)
+        private void Form1_Load_1(object sender, EventArgs e)
         {
             timer1.Start();
-            bgPanel.BackgroundImageLayout = ImageLayout.Stretch;
+            this.BackgroundImageLayout = ImageLayout.Center;
         }
 
         private void timer2_Tick(object sender, EventArgs e)
@@ -199,32 +201,32 @@ namespace GeforceNowQueVB
             totalRunTime.Text = "In queue since " + totalRuntimeInSeconds / 60 + " minutes";
         }
 
-        private void toolStripSplitButton1_ButtonClick(object sender, EventArgs e)
+        private void toolStripSplitButton1_ButtonClick_1(object sender, EventArgs e)
         {
             toolStripSplitButton1.ShowDropDown();
         }
 
-        private void clickToForceUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        private void clickToForceUpdateToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             updateStats();
         }
 
-        private void toolStripMenuItem2_Click(object sender, EventArgs e)
+        private void toolStripMenuItem2_Click_1(object sender, EventArgs e)
         {
             this.Opacity = 0.25;
         }
 
-        private void toolStripMenuItem3_Click(object sender, EventArgs e)
+        private void toolStripMenuItem3_Click_1(object sender, EventArgs e)
         {
             this.Opacity = 0.50;
         }
 
-        private void toolStripMenuItem4_Click(object sender, EventArgs e)
+        private void toolStripMenuItem4_Click_1(object sender, EventArgs e)
         {
             this.Opacity = 1;
         }
 
-        private void alwaysOnTopToolStripMenuItem_Click(object sender, EventArgs e)
+        private void alwaysOnTopToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if(this.TopMost)
             {
@@ -236,7 +238,7 @@ namespace GeforceNowQueVB
             }
         }
 
-        private void selectLogFileManuallyToolStripMenuItem_Click(object sender, EventArgs e)
+        private void selectLogFileManuallyToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
 
             OpenFileDialog openFileDialog1 = new OpenFileDialog();
@@ -250,7 +252,7 @@ namespace GeforceNowQueVB
             }
         }
 
-        private void secondsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void secondsToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             timer1.Interval = 30000;
             // Reset internal tick timer
@@ -258,14 +260,14 @@ namespace GeforceNowQueVB
             updateTimeDisplays();
         }
 
-        private void secondsToolStripMenuItem1_Click(object sender, EventArgs e)
+        private void secondsToolStripMenuItem1_Click_1(object sender, EventArgs e)
         {
             timer1.Interval = 10000;
             toolStripProgressBar1.Value = 0;
             updateTimeDisplays();
         }
 
-        private void hideProgressbarToolStripMenuItem_Click(object sender, EventArgs e)
+        private void hideProgressbarToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             if (toolStripProgressBar1.Visible)
             {
@@ -277,14 +279,106 @@ namespace GeforceNowQueVB
             }
         }
 
-        private void toolStripMenuItem5_Click(object sender, EventArgs e)
+        private void toolStripMenuItem5_Click_1(object sender, EventArgs e)
         {
             this.Opacity = 0.75;
         }
 
-        private void exitToolStripMenuItem_Click(object sender, EventArgs e)
+        private void exitToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        Control GetControlByName(Form containerForm, string Name)
+        {
+            foreach (Control c in containerForm.Controls)
+                if (c.Name == Name)
+                    return c;
+
+            return null;
+        }
+
+        
+        private void copyControl(Control sourceControl, Control targetControl)
+        {
+            if (sourceControl.GetType() != targetControl.GetType())
+            {
+                throw new Exception("Incorrect control types");
+            }
+            foreach (PropertyInfo sourceProperty in sourceControl.GetType().GetProperties())
+            {
+                object newValue = sourceProperty.GetValue(sourceControl, null);
+                MethodInfo mi = sourceProperty.GetSetMethod(true);
+
+                string[] propertyAllowedToCopy = { "Size", "Location", "Text", "BackgroundImage", "BackColor", "Enabled", "ForeColor", "Image" };
+                if (mi != null)
+                {
+                    bool ValidStat = false;
+                    foreach (String PropertyName in propertyAllowedToCopy)
+                    {
+                        if (sourceProperty.Name == PropertyName)
+                        {
+                            ValidStat = true;
+                        }
+
+                        if (ValidStat)
+                        {
+                            sourceProperty.SetValue(targetControl, newValue, null);
+                            if(targetControl.Enabled == false)
+                            {
+                                targetControl.Hide();
+                            }
+                            else
+                            {
+                                targetControl.Show();
+                            }
+                        }
+
+                    }
+                }
+            }
+        }
+
+        private void applyDesignOfForm(Form designToApply)
+        {
+            // I hate forms apps
+            // Get both forms
+            Form targetForm = this;
+
+            this.Size = designToApply.Size;
+            this.BackgroundImage = designToApply.BackgroundImage;
+            this.BackColor = designToApply.BackColor;
+
+            // Get all controls & copy them onto each other
+            foreach (Control c in designToApply.Controls)
+            {
+                Control controlToModify = GetControlByName(targetForm, c.Name);
+                Control toCopyFrom = GetControlByName(designToApply, c.Name);
+
+                copyControl(toCopyFrom, controlToModify);
+            }
+            // update displays, just in case
+            updateStats();
+        }
+
+        private void defaultToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            applyDesignOfForm(new GeforceNowQueDisplay.formDisplayDefault());
+        }
+
+        private void compactToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            applyDesignOfForm(new GeforceNowQueDisplay.formDisplayCompact());
+        }
+
+        private void compactToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            applyDesignOfForm(new GeforceNowQueDisplay.formDisplayCompactDark());
+        }
+
+        private void defaultToolStripMenuItem2_Click(object sender, EventArgs e)
+        {
+            applyDesignOfForm(new GeforceNowQueDisplay.formDisplayDefaultDark());
         }
     }
 }
