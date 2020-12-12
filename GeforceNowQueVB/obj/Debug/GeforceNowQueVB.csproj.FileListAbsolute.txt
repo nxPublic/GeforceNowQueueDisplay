@@ -47,3 +47,4 @@ C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\G
 C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueDisplay.formDisplayDefault.resources
 C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueDisplay.formDisplayCompactDark.resources
 C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueDisplay.formDisplayDefaultDark.resources
+C:\Users\Kevin\source\repos\2\GeforceNowQueueDisplay\GeforceNowQueVB\obj\Debug\GeforceNowQueDisplay.formSessionHistory.resources

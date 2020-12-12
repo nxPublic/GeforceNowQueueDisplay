@@ -54,6 +54,8 @@ namespace GeforceNowQueVB
         float averageTimeBetweenQueueChange = 0;
         int actualPosition = 0;
         int totalDifferentQueStages = 0;
+        
+        // index,contentSplitBySplitKey1
         private void loadRecentQueDebugData()
         {
             // read all lines + filter for queue lines only + filter line content
@@ -81,6 +83,10 @@ namespace GeforceNowQueVB
             int currentPosition = 0;
             int currentPositionTimestamp = 0;
 
+            int lastPosititonTimestamp = 0;
+
+            int startPositionInQueue = 0;
+
             while (index < debugFileContents.Length)
             {
                 // format : "1607622916|20-12-10|18:55:16|255"
@@ -105,9 +111,13 @@ namespace GeforceNowQueVB
                     total = total + (newPositionTimestamp - currentPositionTimestamp);
                     timeDifferences.Add(newPositionTimestamp - currentPositionTimestamp);
                     currentPosition = newPosition;
+                    lastPosititonTimestamp = currentPositionTimestamp;
                     currentPositionTimestamp = newPositionTimestamp;
                     count += 1;
                 }
+
+                
+
                 index += 1;
             }
 
@@ -118,11 +128,8 @@ namespace GeforceNowQueVB
             }
             averageTimeBetweenQueueChange = total / count;
             averageQueueTime.Text = Convert.ToString((Math.Round((averageTimeBetweenQueueChange / 60) * actualPosition)) + " minutes").Trim();
-            Clipboard.SetText(averageQueueTime.Text);
             currentPositionLabel.Text = actualPosition.ToString();
 
-
-            // TODO: There is a wierd index inconsistency in terms of size, i will investigate by time. Potentially it was due to being a global variable.
         }
 
         string[] readDebugFileLines()
@@ -380,5 +387,14 @@ namespace GeforceNowQueVB
         {
             applyDesignOfForm(new GeforceNowQueDisplay.formDisplayDefaultDark());
         }
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
+        }
+
+
+        
+
     }
 }
