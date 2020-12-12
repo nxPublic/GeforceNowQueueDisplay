@@ -310,7 +310,7 @@ namespace GeforceNowQueVB
                 object newValue = sourceProperty.GetValue(sourceControl, null);
                 MethodInfo mi = sourceProperty.GetSetMethod(true);
 
-                string[] propertyAllowedToCopy = { "Size", "Location", "Text", "BackgroundImage", "BackColor", "Enabled", "ForeColor", "Image" };
+                string[] propertyAllowedToCopy = { "Size", "Location", "Text", "BackgroundImage", "BackColor", "Enabled", "ForeColor", "Image", "Text" };
                 if (mi != null)
                 {
                     bool ValidStat = false;
