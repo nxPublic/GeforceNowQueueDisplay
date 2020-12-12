@@ -3,7 +3,7 @@ Since the default application for some reason does not show you your current que
 If you have suggestions open them as Issues and i will add them.
 
 ![screenshot](https://github.com/nxPublic/GeforceNowQueueDisplay/blob/main/defaultMode.png?raw=true)
-![screenshot](https://github.com/nxPublic/GeforceNowQueueDisplay/blob/main/darkMode.png?raw=true)
+![screenshot](https://github.com/nxPublic/GeforceNowQueueDisplay/blob/main/darkModeDefault.png?raw=true)
 
 ## Download Compiled
 https://github.com/nxPublic/GeforceNowQueueDisplay/releases
