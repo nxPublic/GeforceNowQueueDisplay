@@ -7,9 +7,11 @@ using System.Text;
 using System.IO;
 using System.Windows.Forms;
 using System.Reflection;
+using System.Net;
 
 namespace GeforceNowQueVB
 {
+   
     public partial class Form1 : Form
     {
         string appdataLocal = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData).Replace("Roaming", "Local");
@@ -55,8 +57,7 @@ namespace GeforceNowQueVB
         int actualPosition = 0;
         int totalDifferentQueStages = 0;
         
-        // index,contentSplitBySplitKey1
-        private void loadRecentQueDebugData()
+        public void loadRecentQueDebugData()
         {
             // read all lines + filter for queue lines only + filter line content
             string[] debugFileContents = readDebugFileLines();
@@ -132,7 +133,7 @@ namespace GeforceNowQueVB
 
         }
 
-        string[] readDebugFileLines()
+        public string[] readDebugFileLines()
         {
             // Only stream readers allow to read files opened by other processes
             Stream stream = File.Open(path + fileName, FileMode.Open, FileAccess.Read, FileShare.ReadWrite);
@@ -161,7 +162,7 @@ namespace GeforceNowQueVB
             return returnContent.Split(new[] { splitKey }, StringSplitOptions.RemoveEmptyEntries);
         }
 
-        string splitLineData(string content) // returns: log date|log time|position
+        public string splitLineData(string content) // returns: log date|log time|position
         {
             // [3920-12-10/ 21:31:25.271:INFO:simple_grid_app.cc(830)]
             string[] half = content.Split(new[] { "]" }, StringSplitOptions.RemoveEmptyEntries);
@@ -175,7 +176,7 @@ namespace GeforceNowQueVB
             return convertStringToTimestamp(logDate, logTime) + splitKey2 + logDate + splitKey2 + logTime + splitKey2 + position;
         }
 
-        int convertStringToTimestamp(string date, string time)
+        public int convertStringToTimestamp(string date, string time)
         {
             // 20-12-10 21:31:25
             DateTime data = DateTime.ParseExact(date + " " + time, "yy-MM-dd HH:mm:ss", null);
@@ -213,10 +214,7 @@ namespace GeforceNowQueVB
             toolStripSplitButton1.ShowDropDown();
         }
 
-        private void clickToForceUpdateToolStripMenuItem_Click_1(object sender, EventArgs e)
-        {
-            updateStats();
-        }
+      
 
         private void toolStripMenuItem2_Click_1(object sender, EventArgs e)
         {
@@ -390,11 +388,92 @@ namespace GeforceNowQueVB
 
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            
+            Form sessionHistoryForm = new GeforceNowQueDisplay.formSessionHistory();
+            sessionHistoryForm.ShowDialog();
         }
 
+        private void clickToForceUpdateToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+           updateStats();
+        }
 
-        
+        private void checkForNewVersionToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string gitHubRepositoryPath = "https://api.github.com/repos/nxPublic/GeforceNowQueueDisplay/releases/latest";
+            string repoPath = "https://github.com/nxPublic/GeforceNowQueueDisplay/releases/";
+            string CurrentApplicationVersion = "0.8";
+            System.Net.WebClient client = new System.Net.WebClient();
+            string newestVersion = "0.0";
+
+            try
+            {
+                string[] reply = httpResponse(new Uri(gitHubRepositoryPath)).Split(new[] { "," }, StringSplitOptions.None);
+                // Serialization of JSON data in C# is trash- for my needs ill just split the lines go through them one by one to find the latest release tag
+                foreach (string line in reply)
+                {
+                    if (line.Contains("tag_name"))
+                    {
+                        newestVersion = line.Split(new[] { ":" }, StringSplitOptions.None)[1].Replace("\"", "");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+            try
+            {
+                MessageBoxButtons buttons = MessageBoxButtons.YesNo;
+                DialogResult result;
+
+                if(newestVersion.Trim() != CurrentApplicationVersion.Trim())
+                {
+                    result = MessageBox.Show("Your current version is: " + CurrentApplicationVersion + "\r\n" + "The newest version available is: " + newestVersion + "\r\n\r\nWould you like to open the GitHub page to download the latest version now?", "Version Info", buttons);
+                }else
+                {
+                    buttons = MessageBoxButtons.OK;
+                    result = MessageBox.Show("Your current version is: " + CurrentApplicationVersion + "\r\n" + "The newest version available is: " + newestVersion + "\r\n\r\nYou have the newest version available.", "Version Info", buttons);
+                }
+
+                if (result == System.Windows.Forms.DialogResult.Yes)
+                {
+                    System.Diagnostics.Process.Start(repoPath);
+                }
+            }
+            catch (Exception ex)
+            {
+
+            }
+
+
+
+
+        }
+
+        string httpResponse(Uri GitHubRepo)
+        {
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls
+                   | SecurityProtocolType.Tls11
+                   | SecurityProtocolType.Tls12
+                   | SecurityProtocolType.Ssl3;
+           
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(GitHubRepo);
+            request.Method = "GET";
+            request.UserAgent = "Update Request";
+            request.Accept = "application/json";
+            // The response object of 'HttpWebRequest' is assigned to a 'HttpWebResponse' variable.
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            WebHeaderCollection header = response.Headers;
+            string responseText = "";
+            var encoding = ASCIIEncoding.ASCII;
+            using (var reader = new System.IO.StreamReader(response.GetResponseStream(), encoding))
+            {
+                responseText = reader.ReadToEnd();
+            }
+            return responseText;
+        }
 
     }
 }
