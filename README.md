@@ -20,5 +20,4 @@ No clue why there are detections, its not obfuscated/packed or crypted. If you d
 
 ## Support me and this Repository
 You are ofcourse welcome to fork, do modifications or make pull requests of your own.
-However if you feel like supporting me you can do so with buying me a coffee here : http://paypal.me/GrimDawn.
-Thanks for considering it!
+
